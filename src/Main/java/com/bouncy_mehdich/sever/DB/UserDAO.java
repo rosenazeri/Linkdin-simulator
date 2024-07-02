@@ -13,7 +13,7 @@ public class UserDAO {
     public UserDAO() {
         try {
             connection = DriverManager.getConnection(url);
-            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS users (id VARCHAR(36) primary key, password VARCHAR(16), recoveryStr VARCHAR(36))");
+            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS users (id VARCHAR(36) primary key, firstName VARCHAR(20), lastName VARCHAR(40), email VARCHAR, password VARCHAR(16), recoveryStr VARCHAR(36)), createTime Date");
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -22,15 +22,19 @@ public class UserDAO {
     }
 
     public void addUser(User user) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(id, password, recoveryStr)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(id, firstName, lastName, email, password, recoveryStr, createTime)");
         statement.setString(1,user.getID());
-        statement.setString(2,user.getPassword());
-        statement.setString(3,user.getRecoveryStr());
+        statement.setString(2,user.getFirstName());
+        statement.setString(3,user.getLastName());
+        statement.setString(4,user.getEmail());
+        statement.setString(5,user.getPassword());
+        statement.setString(6,user.getRecoveryStr());
+        statement.setDate(7, new java.sql.Date(user.getCreateTime().getTime()));
 
         statement.executeUpdate();
     }
 
-    public void updateUser(User user) throws SQLException {
+    public void updatePassword(User user) throws SQLException {
 
         PreparedStatement statement = connection.prepareStatement("UPDATE users SET password = ? WHERE id = ?");
         statement.setString(1,user.getPassword());
@@ -39,13 +43,21 @@ public class UserDAO {
         statement.executeUpdate();
     }
 
+    public void updateUser(User user) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("UPDATE users SET firstName = ?, lastName = ?, email = ? WHERE id = ?");
+        statement.setString(1,user.getFirstName());
+        statement.setString(2,user.getLastName());
+        statement.setString(3,user.getEmail());
+        statement.setString(4,user.getID());
+    }
+
     public User getUser(String id) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
         statement.setString(1,id);
         ResultSet resultSet = statement.executeQuery();
 
         if(resultSet.next()){
-            return new User(resultSet.getString("id"),resultSet.getString("password"),resultSet.getString("recoveryStr"));
+            return new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recoveryStr"));
         }
 
         return null; //no user found
@@ -57,7 +69,7 @@ public class UserDAO {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()){
-            users.add(new User(resultSet.getString("id"),resultSet.getString("password"),resultSet.getString("recoveryStr")));
+            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recoveryStr")));
         }
 
         return users;

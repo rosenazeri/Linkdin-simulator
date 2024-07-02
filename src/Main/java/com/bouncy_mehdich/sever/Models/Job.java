@@ -5,28 +5,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class Job {
-    @JsonProperty("job-title")
+
+    @JsonProperty("workerID")
+    private String WorkerID;
+    @JsonProperty("jobTitle")
     private String JobTitle;
-    @JsonProperty("employment-type")
+    @JsonProperty("employmentType")
     private String EmploymentType;
     @JsonProperty("company")
     private String CompanyName;
     @JsonProperty("location")
     private String WorkplaceLocation;
-    @JsonProperty("workplace-type")
+    @JsonProperty("workplaceType")
     private String WorkLocationType;
     @JsonProperty("isWorking")
     private boolean isWorking;
-    @JsonProperty("start-date")
+    @JsonProperty("startDate")
     private Date StartDate;
-    @JsonProperty("end-date")
+    @JsonProperty("endDate")
     private Date EndDate;
+    @JsonProperty("skills")
+    private String Skills;
     @JsonProperty("description")
     private String Description;
-    // TODO : Skills(0-5)
+    @JsonProperty("doNotify")
     private boolean doNotify;
 
-    public Job(String jobTitle, String employmentType, String companyName, String workplaceLocation, String workLocationType, boolean isWorking, Date startDate, Date endDate, String description, boolean doNotify) {
+    public Job(String workerID, String jobTitle, String employmentType, String companyName, String workplaceLocation, String workLocationType, boolean isWorking, Date startDate, Date endDate,String skills, String description, boolean doNotify) {
+        WorkerID = workerID;
         JobTitle = jobTitle;
         EmploymentType = employmentType;
         CompanyName = companyName;
@@ -35,8 +41,13 @@ public class Job {
         this.isWorking = isWorking;
         StartDate = startDate;
         EndDate = endDate;
+        Skills = skills;
         Description = description;
         this.doNotify = doNotify;
+    }
+
+    public String getWorkerID() {
+        return WorkerID;
     }
 
     public String getJobTitle() {
@@ -69,6 +80,10 @@ public class Job {
 
     public Date getEndDate() {
         return EndDate;
+    }
+
+    public String getSkills() {
+        return Skills;
     }
 
     public String getDescription() {
@@ -109,6 +124,10 @@ public class Job {
 
     public void setEndDate(Date endDate) {
         EndDate = endDate;
+    }
+
+    public void setSkills(String skills) {
+        Skills = skills;
     }
 
     public void setDescription(String description) {

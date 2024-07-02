@@ -6,22 +6,24 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Post {
-    @JsonProperty("post-id")
+    @JsonProperty("postID")
     private String PostID;
-    @JsonProperty("post-caption")
+    @JsonProperty("postCaption")
     private String Caption;
-    @JsonProperty("sender-id")
+    @JsonProperty("senderID")
     private String SenderID;
-    @JsonProperty("post-date")
-    private Date date;
-    private ArrayList<Profile> Liked_by = new ArrayList<>();
+    @JsonProperty("postDate")
+    private Date PostDate;
+    @JsonProperty("postLikes")
+    private ArrayList<Like> Liked_by = new ArrayList<>();
+    @JsonProperty("postComments")
     private ArrayList<Comment> Comments = new ArrayList<>();
 
-    public Post(String postID, String caption, String senderID, Date date) {
+    public Post(String postID, String caption, String senderID, Date postDate) {
         PostID = postID;
         Caption = caption;
         SenderID = senderID;
-        this.date = date;
+        PostDate = postDate;
     }
 
     public String getPostID() {
@@ -36,11 +38,11 @@ public class Post {
         return SenderID;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getPostDate() {
+        return PostDate;
     }
 
-    public ArrayList<Profile> getLiked_by() {
+    public ArrayList<Like> getLiked_by() {
         return Liked_by;
     }
 
@@ -60,11 +62,11 @@ public class Post {
         SenderID = senderID;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPostDate(Date postDate) {
+        PostDate = postDate;
     }
 
-    public void setLiked_by(ArrayList<Profile> liked_by) {
+    public void setLiked_by(ArrayList<Like> liked_by) {
         Liked_by = liked_by;
     }
 

@@ -2,17 +2,14 @@ package com.bouncy_mehdich.sever.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 public class Profile {
 
     @JsonProperty("id")
     private String ID;
-    @JsonProperty("first-name")
-    private String FirstName;
-    @JsonProperty("last-name")
-    private String LastName;
-    @JsonProperty("nick-name")
+    @JsonProperty("nickName")
     private String NickName;
     @JsonProperty("bio")
     private String Biography;
@@ -20,30 +17,23 @@ public class Profile {
     private String Country;
     @JsonProperty("city")
     private String City;
+    @JsonProperty("herfe")
+    private String Herfe;
     @JsonProperty("birth")
     private Date Birth;
 
-    public Profile(String ID, String firstName, String lastName, String nickName, String biography, String country, String city, Date birth) {
+    public Profile(String ID, String nickName, String biography, String country, String city, String herfe, Date birth) {
         this.ID = ID;
-        FirstName = firstName;
-        LastName = lastName;
         NickName = nickName;
         Biography = biography;
         Country = country;
         City = city;
+        Herfe = herfe;
         Birth = birth;
     }
 
     public String getID() {
         return ID;
-    }
-
-    public String getFirstName() {
-        return FirstName;
-    }
-
-    public String getLastName() {
-        return LastName;
     }
 
     public String getNickName() {
@@ -62,20 +52,16 @@ public class Profile {
         return City;
     }
 
+    public String getHerfe() {
+        return Herfe;
+    }
+
     public Date getBirth() {
         return Birth;
     }
 
     public void setID(String ID) {
         this.ID = ID;
-    }
-
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        LastName = lastName;
     }
 
     public void setNickName(String nickName) {
@@ -94,7 +80,12 @@ public class Profile {
         City = city;
     }
 
+    public void setHerfe(String herfe) {
+        Herfe = herfe;
+    }
+
     public void setBirth(Date birth) {
         Birth = birth;
     }
+
 }
