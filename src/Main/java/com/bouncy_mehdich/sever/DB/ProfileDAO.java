@@ -62,7 +62,7 @@ public class ProfileDAO {
         return null; //no user found
     }
 
-    public ArrayList<Profile> getUsers() throws SQLException {
+    public ArrayList<Profile> getProfiles() throws SQLException {
         ArrayList<Profile> profiles = new ArrayList<>();
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM profiles");
         ResultSet resultSet = statement.executeQuery();
