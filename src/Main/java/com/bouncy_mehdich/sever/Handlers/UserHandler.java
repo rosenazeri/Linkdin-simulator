@@ -32,6 +32,7 @@ public class UserHandler implements HttpHandler {
         // login
 
         if (splittedPath[1].equals("login")) {
+            System.out.println("test");
             String userIdInput = splittedPath[2];
             String passwordInput = splittedPath[3];
 

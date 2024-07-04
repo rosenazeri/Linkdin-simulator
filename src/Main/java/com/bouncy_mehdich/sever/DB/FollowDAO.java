@@ -35,24 +35,48 @@ public class FollowDAO {
         statement.executeUpdate();
     }
 
-    public ArrayList<User> getFollowers(String followedID) throws SQLException {
-        ArrayList<String> userIDs = new ArrayList<>();
+    public ArrayList<String> getFollowers(String userID) throws SQLException {
+        ArrayList<String> followerIDs = new ArrayList<>();
         ArrayList<User> followers = new ArrayList<>();
 
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM follows WHERE followedID = ?");
-        statement.setString(1,followedID);
+        statement.setString(1,userID);
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()){
-            userIDs.add(resultSet.getString("followerID"));
+            followerIDs.add(resultSet.getString("followerID"));
         }
 
-        UserDAO userDAO = new UserDAO();
-        for(String userID : userIDs){
-            followers.add(userDAO.getUser(userID));
+        return followerIDs;
+
+//        UserDAO userDAO = new UserDAO();
+//        for(String userID : followerIDs){
+//            followers.add(userDAO.getUser(userID));
+//        }
+//
+//        return followers;
+    }
+
+    public ArrayList<String> getFollowings(String userID) throws SQLException {
+        ArrayList<String> followingIDs = new ArrayList<>();
+        ArrayList<User> followings = new ArrayList<>();
+
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM follows WHERE followerID = ?");
+        statement.setString(1,userID);
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()){
+            followingIDs.add(resultSet.getString("followedID"));
         }
 
-        return followers;
+        return followingIDs;
+
+//        UserDAO userDAO = new UserDAO();
+//        for(String ID : followingIDs){
+//            followings.add(userDAO.getUser(ID));
+//        }
+//
+//        return followings;
     }
 
 }

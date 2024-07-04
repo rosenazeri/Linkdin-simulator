@@ -1,5 +1,6 @@
 package com.bouncy_mehdich.sever.Handlers;
 
+import com.bouncy_mehdich.sever.Controllers.PostController;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -11,6 +12,14 @@ public class PostHandler implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
+        PostController postController = new PostController();
+        String response = null;
+
+
+        String method = exchange.getRequestMethod();
+        String path = exchange.getRequestURI().getPath();
+        String[] splittedPath = path.split("/");
+
 
     }
 }
