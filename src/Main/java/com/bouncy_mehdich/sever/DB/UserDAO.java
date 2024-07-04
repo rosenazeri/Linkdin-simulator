@@ -7,13 +7,12 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAO {
-
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
     private Connection connection;
     public UserDAO() {
         try {
-            connection = DriverManager.getConnection(url);
-            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS users (id VARCHAR(36) primary key, firstName VARCHAR(20), lastName VARCHAR(40), email VARCHAR, password VARCHAR(16), recoveryStr VARCHAR(36)), createTime Date");
+            connection = DriverManager.getConnection(pathOfDB);
+            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS users (id VARCHAR(36) primary key, firstName VARCHAR(20), lastName VARCHAR(40), email VARCHAR, password VARCHAR(16), recoveryStr VARCHAR(36), createTime Date)");
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -22,7 +21,7 @@ public class UserDAO {
     }
 
     public void addUser(User user) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(id, firstName, lastName, email, password, recoveryStr, createTime)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO users(id, firstName, lastName, email, password, recoveryStr, createTime) VALUES (?, ?, ?, ?, ?, ?, ?)");
         statement.setString(1,user.getID());
         statement.setString(2,user.getFirstName());
         statement.setString(3,user.getLastName());
@@ -69,7 +68,7 @@ public class UserDAO {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()){
-            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recovery-string")));
+            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recoveryStr")));
         }
 
         return users;

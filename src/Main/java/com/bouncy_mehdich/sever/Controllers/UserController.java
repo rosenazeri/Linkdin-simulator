@@ -22,8 +22,6 @@ public class UserController {
         userDAO = new UserDAO();
         profileDAO = new ProfileDAO();
 
-
-
     }
 
     public String addUser(String id, String firstName, String lastName, String email, String password, String recoveryStr) {
