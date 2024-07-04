@@ -40,26 +40,47 @@ public class UserHandler implements HttpHandler {
             if (user != null && user.getPassword().equals(passwordInput)) {
                 response = "ok";
             }
+            else {
+                response = "user or pass false";
+            }
         }
         // signUp
 
-        if (method.equals("POST")) {
-            // Read the request body
-            InputStream requestBody = exchange.getRequestBody();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(requestBody));
-            StringBuilder body = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                body.append(line);
+        if (splittedPath[1].equals("user")) {
+            if (method.equals("POST")) {
+                // Read the request body
+                InputStream requestBody = exchange.getRequestBody();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(requestBody));
+                StringBuilder body = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    body.append(line);
+                }
+                requestBody.close();
+
+                String newUser = body.toString();
+                JSONObject jsonObject = new JSONObject(newUser);
+
+                String status = userController.addUser(jsonObject.getString("id"), jsonObject.getString("firstname"), jsonObject.getString("lastname"), jsonObject.getString("email"), jsonObject.getString("password"), jsonObject.getString("recovery-string"));
+
+                if (status.equals("1")) {
+                    response = "ok";
+                }
+                else {
+                    response = "register problem";
+                }
             }
-            requestBody.close();
-
-            String newUser = body.toString();
-            JSONObject jsonObject = new JSONObject(newUser);
-
-            userController.addUser(jsonObject.getString("id"), jsonObject.getString("firstname"), jsonObject.getString("lastname"), jsonObject.getString("email"), jsonObject.getString("password"), jsonObject.getString("recovery-string"));
-
+            else if (method.equals("GET")) {
+                if (splittedPath.length == 2) {
+                    response = userController.getUsers();
+                }
+                else {
+                    String userIdInput = splittedPath[2];
+                    response = userController.getUserByID(userIdInput).toString();
+                }
+            }
         }
+
         exchange.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
         os.write(response.getBytes());

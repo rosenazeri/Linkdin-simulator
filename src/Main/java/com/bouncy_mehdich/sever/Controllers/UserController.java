@@ -25,13 +25,14 @@ public class UserController {
 
     }
 
-    public void addUser(String id, String firstName, String lastName, String email, String password, String recoveryStr) {
+    public String addUser(String id, String firstName, String lastName, String email, String password, String recoveryStr) {
         if (doesUserExists(id)){
-            return;
+            return "0";
         }
         User user = new User(id,firstName,lastName,email,password,recoveryStr);
         try {
             userDAO.addUser(user);
+            return "1";
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
