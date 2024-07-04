@@ -69,7 +69,7 @@ public class UserDAO {
         ResultSet resultSet = statement.executeQuery();
 
         while (resultSet.next()){
-            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recoveryStr")));
+            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recovery-string")));
         }
 
         return users;
