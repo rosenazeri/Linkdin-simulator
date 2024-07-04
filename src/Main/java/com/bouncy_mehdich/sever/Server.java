@@ -19,6 +19,8 @@ public class Server {
 
             server.createContext("/profile", new ProfileHandler());
             server.createContext("/post", new PostHandler());
+            server.createContext("/following", new FollowsHandler());
+
 
             server.start();
 
