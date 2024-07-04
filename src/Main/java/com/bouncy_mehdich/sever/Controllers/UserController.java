@@ -17,8 +17,12 @@ public class UserController {
     ProfileDAO profileDAO;
 
     public UserController() {
+
         userDAO = new UserDAO();
         profileDAO = new ProfileDAO();
+
+
+
     }
 
     public void addUser(String id, String firstName, String lastName, String email, String password, String recoveryStr) {
@@ -51,7 +55,7 @@ public class UserController {
         }
     }
 
-    public String getUserByID(String id){
+    public User getUserByID(String id){
         User user;
         try {
             user = userDAO.getUser(id);
@@ -59,16 +63,10 @@ public class UserController {
             throw new RuntimeException(e);
         }
         if (user == null){
-            return "no user found";
+            return null;
         }
-        ObjectMapper objectMapper = new ObjectMapper();
-        String response;
-        try {
-            response = objectMapper.writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-        return response;
+
+        return user;
     }
 
     public String getUsers(){

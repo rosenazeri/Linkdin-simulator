@@ -83,4 +83,18 @@ public class User {
     public void setRecoveryStr(String recoveryStr) {
         RecoveryStr = recoveryStr;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + ID + '\'' +
+                ", firstName='" + FirstName + '\'' +
+                ", lastName='" + LastName + '\'' +
+                ", email='" + Email + '\'' +
+                ", password='" + Password + '\'' +
+                ", recovery-string='" + RecoveryStr + '\'' +
+                ", createTime=" + CreateTime +
+                '}';
+    }
+
 }
