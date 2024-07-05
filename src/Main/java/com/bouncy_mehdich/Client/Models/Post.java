@@ -21,8 +21,8 @@ public class Post {
     @JsonProperty("mediaPath")
     private ArrayList<String> MediaPath;
 
-    public Post(String postID, String caption, String senderID, ArrayList<String> mediaPath) {
-        PostID = postID;
+    public Post(String caption, String senderID, ArrayList<String> mediaPath) {
+        PostID = "" + System.currentTimeMillis();
         Caption = caption;
         SenderID = senderID;
         PostDate = new Date(System.currentTimeMillis());
