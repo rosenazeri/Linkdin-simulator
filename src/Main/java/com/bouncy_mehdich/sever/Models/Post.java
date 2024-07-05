@@ -15,15 +15,17 @@ public class Post {
     @JsonProperty("postDate")
     private Date PostDate;
     @JsonProperty("postLikes")
-    private ArrayList<Like> Liked_by = new ArrayList<>();
+    private int Likes;
     @JsonProperty("postComments")
-    private ArrayList<Comment> Comments = new ArrayList<>();
+    private int Comments;
 
     public Post(String postID, String caption, String senderID, Date postDate) {
         PostID = postID;
         Caption = caption;
         SenderID = senderID;
         PostDate = postDate;
+        Comments = 0;
+        Likes = 0;
     }
 
     public String getPostID() {
@@ -42,11 +44,11 @@ public class Post {
         return PostDate;
     }
 
-    public ArrayList<Like> getLiked_by() {
-        return Liked_by;
+    public int getLikes() {
+        return Likes;
     }
 
-    public ArrayList<Comment> getComments() {
+    public int getComments() {
         return Comments;
     }
 
@@ -66,11 +68,19 @@ public class Post {
         PostDate = postDate;
     }
 
-    public void setLiked_by(ArrayList<Like> liked_by) {
-        Liked_by = liked_by;
+    public void increaseLikes() {
+        Likes++;
     }
 
-    public void setComments(ArrayList<Comment> comments) {
-        Comments = comments;
+    public void decreaseLikes() {
+        Likes--;
+    }
+
+    public void decreaseComments() {
+        Comments--;
+    }
+
+    public void increaseComments() {
+        Comments++;
     }
 }

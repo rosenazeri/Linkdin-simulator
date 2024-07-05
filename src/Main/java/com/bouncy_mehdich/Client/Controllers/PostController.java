@@ -25,7 +25,7 @@ public class PostController {
             URL url = new URL("http://localhost:8080/post");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            Post post = new Post(postID, postCaption, userID, new Date(System.currentTimeMillis()));
+            Post post = new Post(postID, postCaption, userID, new Date(System.currentTimeMillis()), null);
 
             ObjectMapper objectMapper = new ObjectMapper();
             String json = objectMapper.writeValueAsString(post);

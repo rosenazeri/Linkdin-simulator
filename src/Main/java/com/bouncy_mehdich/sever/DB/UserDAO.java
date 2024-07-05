@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class UserDAO {
-    private final String pathOfDB = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
     public UserDAO() {
         try {
