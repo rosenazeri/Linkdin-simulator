@@ -8,16 +8,12 @@ public class Like {
     String PostID;
     @JsonProperty("likerID")
     String LikerID;
-    @JsonProperty("likerFirstName")
-    String LikerFirstName;
-    @JsonProperty("likerLastName")
-    String LikerLastName;
 
-    public Like(String postID, String likerID, String likerFirstName, String likerLastName) {
+
+    public Like(String postID, String likerID) {
         PostID = postID;
         LikerID = likerID;
-        LikerFirstName = likerFirstName;
-        LikerLastName = likerLastName;
+
     }
 
     public String getPostID() {
@@ -28,13 +24,7 @@ public class Like {
         return LikerID;
     }
 
-    public String getLikerFirstName() {
-        return LikerFirstName;
-    }
 
-    public String getLikerLastName() {
-        return LikerLastName;
-    }
 
     public void setPostID(String postID) {
         PostID = postID;
@@ -44,11 +34,5 @@ public class Like {
         LikerID = likerID;
     }
 
-    public void setLikerFirstName(String likerFirstName) {
-        LikerFirstName = likerFirstName;
-    }
 
-    public void setLikerLastName(String likerLastName) {
-        LikerLastName = likerLastName;
-    }
 }

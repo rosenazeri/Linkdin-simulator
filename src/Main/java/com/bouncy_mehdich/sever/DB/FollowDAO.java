@@ -1,5 +1,7 @@
 package com.bouncy_mehdich.sever.DB;
 
+import com.bouncy_mehdich.sever.Models.Follow;
+import com.bouncy_mehdich.sever.Models.Like;
 import com.bouncy_mehdich.sever.Models.User;
 
 import java.sql.*;
@@ -22,7 +24,7 @@ public class FollowDAO {
     }
 
     public void follow(String followedID, String followerID) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO follows (followedID, followerID)");
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO follows (followedID, followerID) VALUES (?, ?)");
         statement.setString(1,followedID);
         statement.setString(2,followerID);
         statement.executeUpdate();
@@ -70,13 +72,19 @@ public class FollowDAO {
         }
 
         return followingIDs;
+    }
+    public ArrayList<Follow> getFollows() throws SQLException {
+        ArrayList<Follow> allFollows = new ArrayList<>();
 
-//        UserDAO userDAO = new UserDAO();
-//        for(String ID : followingIDs){
-//            followings.add(userDAO.getUser(ID));
-//        }
-//
-//        return followings;
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM follows");
+
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()){
+            allFollows.add(new Follow(resultSet.getString("followerID"),resultSet.getString("followedID")));
+        }
+
+        return allFollows;
     }
 
 

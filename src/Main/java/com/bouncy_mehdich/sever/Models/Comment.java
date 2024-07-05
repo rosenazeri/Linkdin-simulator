@@ -5,26 +5,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class Comment {
-    @JsonProperty("comment-id")
-    private String CommentID;
+    @JsonProperty("postID")
+    private String PostID;
     @JsonProperty("text")
     private String CommentText;
-    @JsonProperty("sender-id")
+    @JsonProperty("senderID")
     private String SenderID;
-    @JsonProperty("comment-date")
+    @JsonProperty("commentDate")
     private Date date;
-    private Comment Replied_To;
 
-    public Comment(String commentID, String commentText, String senderID, Date date, Comment replied_To) {
-        CommentID = commentID;
+    public Comment(String postID, String commentText, String senderID, Date date) {
+        PostID = postID;
         CommentText = commentText;
         SenderID = senderID;
         this.date = date;
-        Replied_To = replied_To;
     }
 
-    public String getCommentID() {
-        return CommentID;
+    public String getPostID() {
+        return PostID;
     }
 
     public String getCommentText() {
@@ -39,12 +37,8 @@ public class Comment {
         return date;
     }
 
-    public Comment getReplied_To() {
-        return Replied_To;
-    }
-
-    public void setCommentID(String commentID) {
-        CommentID = commentID;
+    public void setPostID(String postID) {
+        PostID = postID;
     }
 
     public void setCommentText(String commentText) {
@@ -59,7 +53,4 @@ public class Comment {
         this.date = date;
     }
 
-    public void setReplied_To(Comment replied_To) {
-        Replied_To = replied_To;
-    }
 }

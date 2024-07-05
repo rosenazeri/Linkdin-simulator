@@ -28,6 +28,15 @@ public class Post {
         Likes = 0;
     }
 
+    public Post(String postID, String caption, String senderID, Date postDate, int likes, int comments) {
+        PostID = postID;
+        Caption = caption;
+        SenderID = senderID;
+        PostDate = postDate;
+        Likes = likes;
+        Comments = comments;
+    }
+
     public String getPostID() {
         return PostID;
     }
