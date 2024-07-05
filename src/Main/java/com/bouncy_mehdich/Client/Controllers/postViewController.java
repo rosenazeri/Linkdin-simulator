@@ -48,7 +48,7 @@ public class postViewController {
                 JSONObject obj = new JSONObject(str);
                 for(String following : followings){
                     if(obj.getString("senderID").equals(following)){
-                        showingPosts.add(new Post(obj.getString("postID"), obj.getString("postCaption"), obj.getString("senderID"), new Date() /* TODO : get postDate from server */ ));
+                        showingPosts.add(new Post(obj.getString("postID"), obj.getString("postCaption"), obj.getString("senderID"), null,obj.getInt("postLikes"),obj.getInt("postComments"), null /* TODO : get mediaPath from server */ ));
                     }
                 }
             }

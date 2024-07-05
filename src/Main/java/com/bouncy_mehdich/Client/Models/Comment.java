@@ -5,26 +5,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class Comment {
-    @JsonProperty("comment-id")
-    private String CommentID;
+    @JsonProperty("postID")
+    private String PostID;
     @JsonProperty("text")
     private String CommentText;
-    @JsonProperty("sender-id")
+    @JsonProperty("senderID")
     private String SenderID;
-    @JsonProperty("comment-date")
-    private Date date;
-    private Comment Replied_To;
+    @JsonProperty("commentDate")
+    private Date Date;
 
-    public Comment(String commentID, String commentText, String senderID, Date date, Comment replied_To) {
-        CommentID = commentID;
+    public Comment(String postID, String commentText, String senderID) {
+        PostID = postID;
         CommentText = commentText;
         SenderID = senderID;
-        this.date = date;
-        Replied_To = replied_To;
+        Date = new Date(System.currentTimeMillis());
     }
 
-    public String getCommentID() {
-        return CommentID;
+    public Comment(String postID, String commentText, String senderID, java.util.Date date) {
+        PostID = postID;
+        CommentText = commentText;
+        SenderID = senderID;
+        Date = date;
+    }
+
+    public String getPostID() {
+        return PostID;
     }
 
     public String getCommentText() {
@@ -36,15 +41,11 @@ public class Comment {
     }
 
     public Date getDate() {
-        return date;
+        return Date;
     }
 
-    public Comment getReplied_To() {
-        return Replied_To;
-    }
-
-    public void setCommentID(String commentID) {
-        CommentID = commentID;
+    public void setPostID(String postID) {
+        PostID = postID;
     }
 
     public void setCommentText(String commentText) {
@@ -56,10 +57,7 @@ public class Comment {
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        Date = date;
     }
 
-    public void setReplied_To(Comment replied_To) {
-        Replied_To = replied_To;
-    }
 }
