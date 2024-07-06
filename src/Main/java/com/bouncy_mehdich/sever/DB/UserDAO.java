@@ -85,4 +85,19 @@ public class UserDAO {
         PreparedStatement statement = connection.prepareStatement("DELETE FROM users");
         statement.executeUpdate();
     }
+
+    public ArrayList<User> searchUsers(String searchPhrase) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE id = ? OR firstName = ? OR lastName = ?");
+        statement.setString(1,searchPhrase);
+        statement.setString(2,searchPhrase);
+        statement.setString(3,searchPhrase);
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()){
+            users.add(new User(resultSet.getString("id"),resultSet.getString("firstName"),resultSet.getString("lastName"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getString("recoveryStr")));
+        }
+
+        return users;
+    }
 }

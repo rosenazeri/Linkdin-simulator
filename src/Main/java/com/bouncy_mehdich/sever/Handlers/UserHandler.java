@@ -46,6 +46,14 @@ public class UserHandler implements HttpHandler {
                 response = "user or pass false";
             }
         }
+
+        // search user by phrase
+        if (splittedPath[1].equals("search")){
+            String searchPhrase = splittedPath[2];
+
+            response = userController.searchUsers(searchPhrase);
+        }
+
         // signUp
 
         if (splittedPath[1].equals("user")) {

@@ -111,6 +111,24 @@ public class UserController {
 
     }
 
+    public String searchUsers(String searchPhrase){
+        ArrayList<User> users;
+        try {
+            users = userDAO.searchUsers(searchPhrase);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String response;
+        try {
+            response = objectMapper.writeValueAsString(users);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return response;
+    }
+
     public void deleteUserByID(String id){
         try {
             userDAO.deleteUser(id);
