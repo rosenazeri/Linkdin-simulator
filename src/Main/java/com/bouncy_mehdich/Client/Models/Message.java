@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Date;
 
 public class Message {
-
+    @JsonProperty("id")
+    private String id;
     @JsonProperty("message")
     private String MessageText;
     @JsonProperty("senderID")
@@ -16,6 +17,7 @@ public class Message {
     private Date MessageDate;
 
     public Message(String messageText, String senderID, String receiverID) {
+        this.id = "" + System.currentTimeMillis();
         MessageText = messageText;
         SenderID = senderID;
         ReceiverID = receiverID;
@@ -43,6 +45,14 @@ public class Message {
 
     public Date getMessageDate() {
         return MessageDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setMessageText(String messageText) {

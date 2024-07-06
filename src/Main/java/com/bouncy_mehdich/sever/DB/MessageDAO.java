@@ -14,7 +14,7 @@ public class MessageDAO {
             //connection = DriverManager.getConnection(pathOfDB);
             connection = ConnectDB.Connect();
 
-            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS messages (message VARCHAR, mediaPath VARCHAR, senderID VARCHAR(3000), receiverID VARCHAR, messageDate Date)");
+            PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS messages (id VARCHAR, message VARCHAR, mediaPath VARCHAR, senderID VARCHAR(3000), receiverID VARCHAR, messageDate Date)");
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -23,12 +23,13 @@ public class MessageDAO {
     }
 
     public void message(Message message, String mediaPath) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("INSERT INTO messages (message, mediaPath, senderID, receiverID, messageDate)");
-        statement.setString(1,message.getMessageText());
-        statement.setString(2,mediaPath);
-        statement.setString(3,message.getSenderID());
-        statement.setString(4,message.getReceiverID());
-        statement.setDate(5,new java.sql.Date(message.getMessageDate().getTime()));
+        PreparedStatement statement = connection.prepareStatement("INSERT INTO messages (id, message, mediaPath, senderID, receiverID, messageDate) VALUES (?,?,?,?,?,?)");
+        statement.setString(1,message.getId());
+        statement.setString(2,message.getMessageText());
+        statement.setString(3,mediaPath);
+        statement.setString(4,message.getSenderID());
+        statement.setString(5,message.getReceiverID());
+        statement.setDate(6,new java.sql.Date(message.getMessageDate().getTime()));
 
         statement.executeUpdate();
     }
@@ -45,15 +46,29 @@ public class MessageDAO {
         statement.executeUpdate();
     }
 
-    public void deleteMessage(Message message, String mediaPath) throws SQLException {
-        PreparedStatement statement = connection.prepareStatement("DELETE FROM messages WHERE message = ? AND mediaPath = ? AND senderID = ? AND receiverID = ? AND messageDate = ?");
-        statement.setString(1,message.getMessageText());
-        statement.setString(2,mediaPath);
-        statement.setString(3,message.getSenderID());
-        statement.setString(4,message.getReceiverID());
-        statement.setDate(5,new java.sql.Date(message.getMessageDate().getTime()));
+    public void deleteMessage(String id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM messages WHERE id = ?");
+        statement.setString(1,id);
+
 
         statement.executeUpdate();
+    }
+
+    public ArrayList<Message> getMessagesReceived(String receiver) throws SQLException {
+        ArrayList<Message> messages = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE receiverID = ?");
+        statement.setString(1, receiver);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Message message = new Message();
+            message.setId(resultSet.getString("id"));
+            message.setSenderID(resultSet.getString("senderID"));
+            message.setReceiverID(resultSet.getString("receiverID"));
+            message.setMessageText(resultSet.getString("message"));
+            message.setMessageDate(resultSet.getDate("messageDate"));
+            messages.add(message);
+        }
+        return messages;
     }
 
     public ArrayList<Message> getChatMessages(String senderID, String receiverID) throws SQLException {
@@ -88,5 +103,39 @@ public class MessageDAO {
         statement.setString(1,receiverID);
         statement.setString(2,senderID);
         statement.executeUpdate();
+    }
+    public Message getMessage(String id) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE id = ?");
+        statement.setString(1, id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            Message message = new Message();
+            message.setId(id);
+            message.setSenderID(resultSet.getString("senderID"));
+            message.setReceiverID(resultSet.getString("receiverID"));
+            message.setMessageText(resultSet.getString("message"));
+            message.setMessageDate(resultSet.getDate("timeStamp"));
+            return message;
+        }
+        return null;
+    }
+    public ArrayList<Message> getMessages(String user1, String user2) throws SQLException {
+        ArrayList<Message> messages = new ArrayList<>();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE (senderID = ? AND receiverID = ?) or (senderID = ? AND receiverID = ?)");
+        statement.setString(1, user1);
+        statement.setString(2, user2);
+        statement.setString(3, user2);
+        statement.setString(4, user1);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            Message message = new Message();
+            message.setId(resultSet.getString("id"));
+            message.setSenderID(resultSet.getString("sender"));
+            message.setReceiverID(resultSet.getString("receiver"));
+            message.setMessageText(resultSet.getString("text"));
+            message.setMessageDate(resultSet.getDate("timeStamp"));
+            messages.add(message);
+        }
+        return messages;
     }
 }

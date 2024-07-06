@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class Message {
 
+    @JsonProperty("id")
+    private String id;
     @JsonProperty("message")
     private String MessageText;
     @JsonProperty("senderID")
@@ -14,6 +16,9 @@ public class Message {
     private String ReceiverID;
     @JsonProperty("messageDate")
     private Date MessageDate;
+
+    public Message() {
+    }
 
     public Message(String messageText, String senderID, String receiverID) {
         MessageText = messageText;
@@ -59,5 +64,13 @@ public class Message {
 
     public void setMessageDate(Date messageDate) {
         MessageDate = messageDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
