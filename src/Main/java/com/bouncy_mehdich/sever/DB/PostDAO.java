@@ -7,11 +7,13 @@ import java.util.ArrayList;
 
 public class PostDAO {
 
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
     public PostDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS posts (postID VARCHAR, postCaption VARCHAR(3000), senderID VARCHAR, mediaPath VARCHAR, postDate Date, postLikes INT, postComments INT)");
             statement.executeUpdate();
 
@@ -26,7 +28,7 @@ public class PostDAO {
         statement.setString(2,post.getCaption());
         statement.setString(3,post.getSenderID());
         statement.setString(4,mediaPath);
-        statement.setDate(5,new java.sql.Date(post.getPostDate().getTime()));
+        statement.setDate(5,null);
         statement.setInt(6,post.getLikes());
         statement.setInt(7,post.getComments());
 

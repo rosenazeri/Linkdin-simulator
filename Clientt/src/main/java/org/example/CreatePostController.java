@@ -76,8 +76,10 @@ public class CreatePostController {
             response = stringBuilder.toString();
 
             if (response.equals("ok")){
+                captionTextArea.setText("");
                 // post uploaded !!
             } else {
+                captionTextArea.setText("Post unsuccessful");
                 // server error !!
             }
 

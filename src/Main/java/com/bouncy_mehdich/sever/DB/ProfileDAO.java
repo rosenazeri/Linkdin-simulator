@@ -11,7 +11,9 @@ public class ProfileDAO {
     private Connection connection;
     public ProfileDAO() {
         try {
-            connection = DriverManager.getConnection(pathOfDB);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS profiles(id VARCHAR(36) primary key, nickName VARCHAR(40), bio VARCHAR(200), avatar_path VARCHAR, background_path VARCHAR, country VARCHAR(60), city VARCHAR(60), herfe VARCHAR(60), birth DATE)");
             statement.executeUpdate();
 

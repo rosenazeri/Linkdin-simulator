@@ -6,12 +6,14 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class JobDAO {
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
 
     public JobDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE  jobs (workerID VARCHAR, jobTitle VARCHAR, employmentType VARCHAR, company VARCHAR, location VARCHAR, workplaceType VARCHAR, isWorking VARCHAR, startDate DATE, endDate DATE,skills VARCHAR, description VARCHAR, doNotify VARCHAR)");
             statement.executeUpdate();
 

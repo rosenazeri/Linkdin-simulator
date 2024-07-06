@@ -11,7 +11,8 @@ public class UserDAO {
     private Connection connection;
     public UserDAO() {
         try {
-            connection = DriverManager.getConnection(pathOfDB);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS users (id VARCHAR(36) primary key, firstName VARCHAR(20), lastName VARCHAR(40), email VARCHAR, password VARCHAR(16), recoveryStr VARCHAR(36), createTime Date)");
             statement.executeUpdate();
 

@@ -8,12 +8,14 @@ import java.util.ArrayList;
 
 public class LikesDAO {
 
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
 
     public LikesDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS likes (postID VARCHAR, likerID VARCHAR, likerFirstName VARCHAR(20), likerLastName VARCHAR(40))");
             statement.executeUpdate();
 

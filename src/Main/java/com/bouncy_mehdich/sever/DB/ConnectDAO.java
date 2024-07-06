@@ -7,12 +7,12 @@ import java.util.ArrayList;
 
 public class ConnectDAO {
 
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
 
     public ConnectDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            connection = DriverManager.getConnection(pathOfDB);
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS connects (user1 VARCHAR, user2 VARCHAR)");
             statement.executeUpdate();
 

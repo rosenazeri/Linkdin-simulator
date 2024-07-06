@@ -38,10 +38,10 @@ public class PostHandler implements HttpHandler {
             String newPost = body.toString();
             JSONObject obj = new JSONObject(newPost);
 
-            Post post = new Post(obj.getString("postID"), obj.getString("postCaption"), obj.getString("senderID"), new Date(obj.getString("postDate")));
+            Post post = new Post(obj.getString("postID"), obj.getString("postCaption"), obj.getString("senderID"), null);
 
 
-            String status = null;
+            String status = "";
             try {
                 postController.addPost(post, null);
                 status = "1";
@@ -55,6 +55,8 @@ public class PostHandler implements HttpHandler {
             else {
                 response = "postSaving problem";
             }
+        } else if (method.equals("GET")) {
+            response = postController.getAllPosts();
         }
 
         exchange.sendResponseHeaders(200, response.getBytes().length);

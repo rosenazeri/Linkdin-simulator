@@ -6,12 +6,16 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class CommentDAO {
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    //private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
+
     private Connection connection;
 
     public CommentDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS comments (postID VARCHAR, text VARCHAR, senderID VARCHAR, commentDate Date, mediaPath VARCHAR)");
             statement.executeUpdate();
 

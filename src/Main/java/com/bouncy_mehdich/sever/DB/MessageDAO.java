@@ -7,11 +7,13 @@ import java.util.ArrayList;
 
 public class MessageDAO {
 
-    private final String url = "jdbc:sqlite:/D:/java projects/Lind-A/test.db";
+    private final String pathOfDB = "jdbc:sqlite:/Users/mehdich/Desktop/Final/Lind-A/test.db";
     private Connection connection;
     public MessageDAO() {
         try {
-            connection = DriverManager.getConnection(url);
+            //connection = DriverManager.getConnection(pathOfDB);
+            connection = ConnectDB.Connect();
+
             PreparedStatement statement = connection.prepareStatement("CREATE TABLE IF NOT EXISTS messages (message VARCHAR, mediaPath VARCHAR, senderID VARCHAR(3000), receiverID VARCHAR, messageDate Date)");
             statement.executeUpdate();
 
