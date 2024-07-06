@@ -1,4 +1,4 @@
-package com.bouncy_mehdich.sever.Models;
+package Main.java.com.bouncy_mehdich.sever.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -1,8 +1,8 @@
-package com.bouncy_mehdich.Client.Controllers;
+package Main.java.com.bouncy_mehdich.Client.Controllers;
 
-import com.bouncy_mehdich.Client.Models.Follow;
-import com.bouncy_mehdich.Client.Models.Like;
-import com.bouncy_mehdich.Client.Models.Post;
+import Main.java.com.bouncy_mehdich.Client.Models.Follow;
+import Main.java.com.bouncy_mehdich.Client.Models.Like;
+import Main.java.com.bouncy_mehdich.Client.Models.Post;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.cj.x.protobuf.MysqlxCursor;
 import org.json.JSONArray;

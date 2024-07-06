@@ -1,6 +1,6 @@
-package com.bouncy_mehdich.Client.Controllers;
+package Main.java.com.bouncy_mehdich.Client.Controllers;
 
-import com.bouncy_mehdich.Client.Models.User;
+import Main.java.com.bouncy_mehdich.Client.Models.User;
 
 public class ScreenManager {
 

@@ -1,6 +1,6 @@
-package com.bouncy_mehdich.sever.DB;
+package Main.java.com.bouncy_mehdich.sever.DB;
 
-import com.bouncy_mehdich.sever.Models.Message;
+import Main.java.com.bouncy_mehdich.sever.Models.Message;
 
 import java.sql.*;
 import java.util.ArrayList;

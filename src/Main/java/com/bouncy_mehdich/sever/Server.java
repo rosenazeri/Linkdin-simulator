@@ -1,4 +1,4 @@
-package com.bouncy_mehdich.sever;
+package Main.java.com.bouncy_mehdich.sever;
 
 
 import java.io.IOException;
@@ -6,9 +6,9 @@ import java.net.InetSocketAddress;
 import java.sql.SQLException;
 
 
-import com.bouncy_mehdich.sever.DB.UserDAO;
+import Main.java.com.bouncy_mehdich.sever.DB.UserDAO;
 import com.sun.net.httpserver.HttpServer;
-import com.bouncy_mehdich.sever.Handlers.*;
+import Main.java.com.bouncy_mehdich.sever.Handlers.*;
 
 public class Server {
 

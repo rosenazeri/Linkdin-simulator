@@ -1,6 +1,6 @@
-package com.bouncy_mehdich.Client.Controllers;
+package Main.java.com.bouncy_mehdich.Client.Controllers;
 
-import com.bouncy_mehdich.Client.Models.Post;
+import Main.java.com.bouncy_mehdich.Client.Models.Post;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

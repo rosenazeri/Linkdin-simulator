@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.Controllers;
+package Main.java.com.bouncy_mehdich.sever.Controllers;
 
-import com.bouncy_mehdich.sever.DB.CommentDAO;
-import com.bouncy_mehdich.sever.Models.Comment;
+import Main.java.com.bouncy_mehdich.sever.DB.CommentDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.Comment;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

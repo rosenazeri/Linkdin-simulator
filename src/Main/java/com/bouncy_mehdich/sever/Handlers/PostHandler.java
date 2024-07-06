@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.Handlers;
+package Main.java.com.bouncy_mehdich.sever.Handlers;
 
-import com.bouncy_mehdich.sever.Models.Post;
-import com.bouncy_mehdich.sever.Controllers.PostController;
+import Main.java.com.bouncy_mehdich.sever.Models.Post;
+import Main.java.com.bouncy_mehdich.sever.Controllers.PostController;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import org.json.JSONObject;

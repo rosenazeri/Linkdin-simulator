@@ -1,4 +1,4 @@
-package com.bouncy_mehdich.sever.Models;
+package Main.java.com.bouncy_mehdich.sever.Models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -86,15 +86,21 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id='" + ID + '\'' +
-                ", firstName='" + FirstName + '\'' +
-                ", lastName='" + LastName + '\'' +
-                ", email='" + Email + '\'' +
-                ", password='" + Password + '\'' +
-                ", recovery-string='" + RecoveryStr + '\'' +
-                ", createTime=" + CreateTime +
-                '}';
+        return "User [id="
+                + ID
+                + ", firstName="
+                + FirstName
+                + ", lastName="
+                + LastName
+                + ", email="
+                + Email
+                + ", password="
+                + Password
+                + ", recovery-string="
+                + RecoveryStr
+                + ", createTime="
+
+                + "" + "]";
     }
 
 }

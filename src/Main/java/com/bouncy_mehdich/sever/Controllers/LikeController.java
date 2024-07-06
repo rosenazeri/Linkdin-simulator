@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.Controllers;
+package Main.java.com.bouncy_mehdich.sever.Controllers;
 
-import com.bouncy_mehdich.sever.DB.LikesDAO;
-import com.bouncy_mehdich.sever.Models.Like;
+import Main.java.com.bouncy_mehdich.sever.DB.LikesDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.Like;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

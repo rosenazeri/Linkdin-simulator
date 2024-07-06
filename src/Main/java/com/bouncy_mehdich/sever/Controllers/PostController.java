@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.Controllers;
+package Main.java.com.bouncy_mehdich.sever.Controllers;
 
-import com.bouncy_mehdich.sever.DB.PostDAO;
-import com.bouncy_mehdich.sever.Models.Post;
+import Main.java.com.bouncy_mehdich.sever.DB.PostDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.Post;
 
 import java.sql.SQLException;
 

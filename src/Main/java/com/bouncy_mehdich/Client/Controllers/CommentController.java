@@ -1,8 +1,8 @@
-package com.bouncy_mehdich.Client.Controllers;
+package Main.java.com.bouncy_mehdich.Client.Controllers;
 
-import com.bouncy_mehdich.Client.Models.Comment;
-import com.bouncy_mehdich.Client.Models.Follow;
-import com.bouncy_mehdich.Client.Models.User;
+import Main.java.com.bouncy_mehdich.Client.Models.Comment;
+import Main.java.com.bouncy_mehdich.Client.Models.Follow;
+import Main.java.com.bouncy_mehdich.Client.Models.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.JSONArray;

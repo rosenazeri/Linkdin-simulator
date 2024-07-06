@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.Handlers;
+package Main.java.com.bouncy_mehdich.sever.Handlers;
 
-import com.bouncy_mehdich.sever.Controllers.LikeController;
-import com.bouncy_mehdich.sever.Controllers.UserController;
+import Main.java.com.bouncy_mehdich.sever.Controllers.LikeController;
+import Main.java.com.bouncy_mehdich.sever.Controllers.UserController;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

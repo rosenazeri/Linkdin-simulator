@@ -1,6 +1,6 @@
-package com.bouncy_mehdich.sever.Handlers;
+package Main.java.com.bouncy_mehdich.sever.Handlers;
 
-import com.bouncy_mehdich.sever.Controllers.ProfileController;
+import Main.java.com.bouncy_mehdich.sever.Controllers.ProfileController;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 

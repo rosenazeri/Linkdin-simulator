@@ -1,8 +1,8 @@
-package com.bouncy_mehdich.sever.Controllers;
+package Main.java.com.bouncy_mehdich.sever.Controllers;
 
-import com.bouncy_mehdich.sever.DB.FollowDAO;
-import com.bouncy_mehdich.sever.Models.Follow;
-import com.bouncy_mehdich.sever.Models.Like;
+import Main.java.com.bouncy_mehdich.sever.DB.FollowDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.Follow;
+import Main.java.com.bouncy_mehdich.sever.Models.Like;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

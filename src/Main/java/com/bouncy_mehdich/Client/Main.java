@@ -1,6 +1,6 @@
-package com.bouncy_mehdich.Client;
+package Main.java.com.bouncy_mehdich.Client;
 
-import com.bouncy_mehdich.Client.Controllers.SignUpController;
+import Main.java.com.bouncy_mehdich.Client.Controllers.SignUpController;
 
 public class Main {
 

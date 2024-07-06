@@ -1,7 +1,7 @@
-package com.bouncy_mehdich.sever.DB;
+package Main.java.com.bouncy_mehdich.sever.DB;
 
-import com.bouncy_mehdich.sever.Models.Like;
-import com.bouncy_mehdich.sever.Models.User;
+import Main.java.com.bouncy_mehdich.sever.Models.Like;
+import Main.java.com.bouncy_mehdich.sever.Models.User;
 
 import java.sql.*;
 import java.util.ArrayList;

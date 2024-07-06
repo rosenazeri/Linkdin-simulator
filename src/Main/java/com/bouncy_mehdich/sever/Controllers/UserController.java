@@ -1,9 +1,9 @@
-package com.bouncy_mehdich.sever.Controllers;
+package Main.java.com.bouncy_mehdich.sever.Controllers;
 
-import com.bouncy_mehdich.sever.DB.ProfileDAO;
-import com.bouncy_mehdich.sever.DB.UserDAO;
-import com.bouncy_mehdich.sever.Models.Profile;
-import com.bouncy_mehdich.sever.Models.User;
+import Main.java.com.bouncy_mehdich.sever.DB.ProfileDAO;
+import Main.java.com.bouncy_mehdich.sever.DB.UserDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.Profile;
+import Main.java.com.bouncy_mehdich.sever.Models.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -67,6 +67,29 @@ public class UserController {
         }
 
         return user;
+    }
+
+    public String getUserByIDtoString(String id){
+        User user;
+        try {
+            user = userDAO.getUser(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        if (user == null){
+            return "no user found";
+        }
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String response;
+        try {
+            response = objectMapper.writeValueAsString(user);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+        return response;
+
+
     }
 
     public String getUsers(){

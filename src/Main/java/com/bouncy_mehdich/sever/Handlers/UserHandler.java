@@ -1,8 +1,8 @@
-package com.bouncy_mehdich.sever.Handlers;
+package Main.java.com.bouncy_mehdich.sever.Handlers;
 
-import com.bouncy_mehdich.sever.Controllers.UserController;
-import com.bouncy_mehdich.sever.DB.UserDAO;
-import com.bouncy_mehdich.sever.Models.User;
+import Main.java.com.bouncy_mehdich.sever.Controllers.UserController;
+import Main.java.com.bouncy_mehdich.sever.DB.UserDAO;
+import Main.java.com.bouncy_mehdich.sever.Models.User;
 import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -62,10 +62,12 @@ public class UserHandler implements HttpHandler {
                 requestBody.close();
 
                 String newUser = body.toString();
+//                Gson gson = new Gson();
+//                User user = gson.fromJson(newUser, User.class);
                 JSONObject jsonObject = new JSONObject(newUser);
 
                 String status = userController.addUser(jsonObject.getString("id"), jsonObject.getString("firstName"), jsonObject.getString("lastName"), jsonObject.getString("email"), jsonObject.getString("password"), jsonObject.getString("recovery-string"));
-
+                //String status = userController.addUser(user.getID(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), "null");
                 if (status.equals("1")) {
                     response = "ok";
                 }
@@ -81,7 +83,7 @@ public class UserHandler implements HttpHandler {
                 }
                 else {
                     String userIdInput = splittedPath[2];
-                    response = userController.getUserByID(userIdInput).toString();
+                    response = userController.getUserByIDtoString(userIdInput);
                 }
             }
         }

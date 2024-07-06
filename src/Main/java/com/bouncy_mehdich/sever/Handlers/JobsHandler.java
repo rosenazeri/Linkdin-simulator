@@ -1,4 +1,4 @@
-package com.bouncy_mehdich.sever.Handlers;
+package Main.java.com.bouncy_mehdich.sever.Handlers;
 
 public class JobsHandler {
 }
