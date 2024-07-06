@@ -27,6 +27,10 @@ public class Server {
 
             server.createContext("/likes", new LikesHandler());
             server.createContext("/comments", new CommentHandler());
+            server.createContext("/search", new UserHandler());
+            server.createContext("/jobs", new JobsHandler());
+
+
 
 
 

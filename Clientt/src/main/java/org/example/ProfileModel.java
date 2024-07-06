@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class Profile {
+public class ProfileModel {
 
     @JsonProperty("id")
     private String ID;
@@ -21,7 +21,7 @@ public class Profile {
     @JsonProperty("birth")
     private Date Birth;
 
-    public Profile(String ID, String nickName, String biography, String country, String city, String herfe, Date birth) {
+    public ProfileModel(String ID, String nickName, String biography, String country, String city, String herfe, Date birth) {
         this.ID = ID;
         NickName = nickName;
         Biography = biography;

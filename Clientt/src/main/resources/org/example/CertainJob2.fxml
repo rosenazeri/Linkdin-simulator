@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720" prefWidth="1280" style="-fx-background-color: #bfb8ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.CertainJob2">
+   <children>
+      <Button fx:id="Back" layoutX="36.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" textFill="#1a00ff">
+         <font>
+            <Font name="Lucida Bright" size="18.0" />
+         </font></Button>
+      <Label alignment="CENTER" layoutX="556.0" layoutY="77.0" prefHeight="18.0" prefWidth="168.0" text="Extra explanations :" textFill="#1a00ff">
+         <font>
+            <Font name="Lucida Bright" size="12.0" />
+         </font></Label>
+      <TextArea fx:id="Explanation" layoutX="466.0" layoutY="113.0" prefHeight="134.0" prefWidth="347.0" />
+      <Label alignment="CENTER" layoutX="619.0" layoutY="284.0" prefHeight="18.0" prefWidth="41.0" text="Skils :" textFill="#1a00ff">
+         <font>
+            <Font name="Lucida Bright" size="12.0" />
+         </font></Label>
+      <Button fx:id="Done" layoutX="605.0" layoutY="600.0" mnemonicParsing="false" onAction="#handleDoneButtonAction" text="Done" textFill="#1a00ff">
+         <font>
+            <Font name="Lucida Bright" size="18.0" />
+         </font></Button>
+      <TextArea fx:id="skills" layoutX="467.0" layoutY="337.0" prefHeight="134.0" prefWidth="347.0" />
+   </children>
+</AnchorPane>
