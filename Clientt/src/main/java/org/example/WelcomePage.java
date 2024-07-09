@@ -33,7 +33,6 @@ public class WelcomePage {
             e.printStackTrace();
         }
     }
-    Clientt\src\main\resources\org\example
     @FXML
     public void handleSignUpAction(ActionEvent actionEvent) {
         HelloApplication m = new HelloApplication();
